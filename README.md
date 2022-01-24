@@ -35,3 +35,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ```
 用npm run preitter 来格式化
 ```
+### husky
+```
+用来提交代码时的根式化
