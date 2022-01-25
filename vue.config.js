@@ -2,6 +2,7 @@
 module.exports = {
   // 1、是vue-cli提供的属性
   outputDir: './build',
+  publicPath: './',
   // 2、合并到webpack 和webapck的属性完全一致
   configureWebpack: {
     resolve: {
