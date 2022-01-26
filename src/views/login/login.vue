@@ -1,17 +1,15 @@
 <template>
-  <div>
-    login
-    <el-button type="primary">按钮</el-button>
+  <div class="login">
+    <login-panle />
   </div>
 </template>
 
 <script lang="ts">
-import { ElButton } from 'element-plus/lib/components'
-
 import { defineComponent } from 'vue'
+import LoginPanle from './childcpn/login-panle.vue'
 export default defineComponent({
   components: {
-    ElButton
+    LoginPanle
   },
   setup() {
     return {}
@@ -19,4 +17,13 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style lang="less" scoped>
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  // background: url('../../assets/logo.png');
+}
+</style>
