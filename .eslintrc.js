@@ -17,6 +17,8 @@ module.exports = {
     'space-before-function-paren': 0,
     'spaced-comment': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'no-unused-expressions': 'off'
+    'no-unused-expressions': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'import/no-duplicates': 'off'
   }
 }

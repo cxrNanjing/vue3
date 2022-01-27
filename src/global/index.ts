@@ -9,10 +9,20 @@ import {
   ElIcon,
   ElFormItem,
   ElCheckbox,
-  ElLink
+  ElLink,
+  ElContainer,
+  ElAside,
+  ElMain,
+  ElHeader,
+  ElMenu,
+  ElSubMenu,
+  ElMenuItemGroup,
+  ElMenuItem,
+  ElRadioGroup,
+  ElRadioButton
 } from 'element-plus/lib/components'
 
-import { Avatar, Phone } from '@element-plus/icons-vue'
+import { Avatar, Expand, Fold, Phone } from '@element-plus/icons-vue'
 
 const components = [
   ElButton,
@@ -23,10 +33,20 @@ const components = [
   ElIcon,
   ElFormItem,
   ElCheckbox,
-  ElLink
+  ElLink,
+  ElContainer,
+  ElAside,
+  ElMain,
+  ElHeader,
+  ElMenu,
+  ElSubMenu,
+  ElMenuItemGroup,
+  ElMenuItem,
+  ElRadioGroup,
+  ElRadioButton
 ]
 
-const icons = [Avatar, Phone]
+const icons = [Avatar, Phone, Fold, Expand]
 
 //注册组件
 export function registerElementCpn(app: App): void {

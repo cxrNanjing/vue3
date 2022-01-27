@@ -4,6 +4,7 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { ElLoading } from 'element-plus/lib/components'
 import type { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'
 
+import localCache from '@/utils/cache'
 interface HYRequestHook<T = AxiosResponse> {
   requestInterceptor?: (cofing: AxiosRequestConfig) => AxiosRequestConfig
   requestInterceptorCatch?: (error: any) => any
@@ -28,13 +29,19 @@ class HYRequest {
     this.showloading = config.showloading ?? true
     // 添加所有的实例的拦截器
     this.instance.interceptors.request.use(
-      (config) => {
+      (config: any) => {
         if (this.showloading) {
           this.loading = ElLoading.service({
             lock: true,
             text: '正在请求数据...',
             background: 'rgba(0, 0, 0, 0.5)'
           })
+        }
+        //携带token
+        const token = localCache.getCache('token')
+        if (token) {
+          // config.headers.Authorization = `Bearer ${token}`
+          config.headers.Authorization = `Bearer ${token}`
         }
         return config
       },
@@ -49,8 +56,11 @@ class HYRequest {
         return res.data
       },
       (err) => {
+        //包含400 500等错误
         this.loading?.close()
-        return err
+        // return err 此时不能使用try catch
+        // console.log(err.response)
+        return Promise.reject(err.response)
       }
     )
 
@@ -80,6 +90,12 @@ class HYRequest {
         })
         .catch((err) => {
           this.showloading = true
+          // if (err.response.status === 400) {
+          //   alert(err.response.data)
+          // }
+          // console.log('++++', err.response)
+          // 可以在这边处理错误比如400，500等 但不要reject 也可以reject 后续处理
+          // console.log(err)
           reject(err)
         })
     })
@@ -90,7 +106,7 @@ class HYRequest {
   }
 
   post<T>(config: HYRequestConfig<T>): Promise<T> {
-    return this.request<T>({ ...config, method: 'GET' })
+    return this.request<T>({ ...config, method: 'POST' })
   }
 }
 

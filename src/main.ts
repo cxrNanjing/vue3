@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { saveStore } from './store'
 
 import 'normalize.css'
 import './assets/css/index.less'
@@ -13,6 +14,7 @@ import { registerElementCpn, registerIconCpn } from './global'
 
 const app = createApp(App)
 // registerElementCpn(app)
+saveStore()
 app.use(registerElementCpn)
 app.use(registerIconCpn)
 app.use(store)

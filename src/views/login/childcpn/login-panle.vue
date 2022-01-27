@@ -1,23 +1,23 @@
 <template>
   <div class="login-panle">
     <h2>管理</h2>
-    <el-tabs type="border-card" stretch>
-      <el-tab-pane>
+    <el-tabs type="border-card" stretch v-model="currentTab">
+      <el-tab-pane name="account">
         <template #label>
           <span>
             <el-icon><avatar /></el-icon>账号
           </span>
         </template>
-        <login-account />
+        <login-account ref="accountRef" />
       </el-tab-pane>
 
-      <el-tab-pane>
+      <el-tab-pane name="phone">
         <template #label>
           <span>
             <el-icon><phone /></el-icon>手机
           </span>
         </template>
-        <login-phone />
+        <login-phone ref="phoneRef" />
       </el-tab-pane>
     </el-tabs>
 
@@ -42,13 +42,22 @@ export default defineComponent({
     LoginPhone
   },
   setup() {
-    const isKeepPasswoed = ref(true)
+    const isKeepPasswoed = ref<boolean>(true)
+    const accountRef = ref<InstanceType<typeof LoginAccount>>()
+    const phoneRef = ref<InstanceType<typeof LoginPhone>>()
+    const currentTab = ref<string>('account')
     const loginClick = () => {
-      console.log('--------')
+      if (currentTab.value === 'account') {
+        accountRef.value?.loginAction(isKeepPasswoed.value)
+      } else {
+      }
     }
     return {
       isKeepPasswoed,
-      loginClick
+      loginClick,
+      accountRef,
+      phoneRef,
+      currentTab
     }
   }
 })
