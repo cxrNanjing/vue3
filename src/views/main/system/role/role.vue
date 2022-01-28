@@ -1,7 +1,5 @@
 <template>
-  <div class="role">
-    role
-  </div>
+  <div class="role">role</div>
 </template>
 
 <script lang="ts">
@@ -13,6 +11,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>
