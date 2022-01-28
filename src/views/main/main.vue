@@ -9,7 +9,7 @@
           <Head @foldChange="foldChange" />
         </el-header>
         <el-main class="page-main">
-          <Middle />
+          <router-view></router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -20,12 +20,10 @@
 import { defineComponent, ref } from 'vue'
 import Aside from './childcpn/aside/index.vue'
 import Head from './childcpn/header/index.vue'
-import Middle from './childcpn/middle/index.vue'
 export default defineComponent({
   components: {
     Aside,
-    Head,
-    Middle
+    Head
   },
   setup() {
     //折叠

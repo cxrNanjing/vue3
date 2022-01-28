@@ -7,6 +7,7 @@ import {
 } from '@/service/login/login'
 import localCache from '@/utils/cache'
 import router from '@/router'
+import { mapMenuToRoutes } from '@/utils/map-menu'
 
 const loginModule: Module<ILoginState, IRootState> = {
   namespaced: true,
@@ -26,6 +27,12 @@ const loginModule: Module<ILoginState, IRootState> = {
     },
     changeUserMenu(state, userMenu: any) {
       state.menue = userMenu
+      // userMenu => user
+      const routes = mapMenuToRoutes(userMenu)
+      // console.log(routes)
+      routes.forEach((i) => {
+        router.addRoute('main', i)
+      })
     }
   },
   actions: {

@@ -21,7 +21,7 @@
               <span>{{ item.name }}</span>
             </template>
             <template v-for="subitem in item.children" :key="subitem.id">
-              <template v-if="subitem.type === 2">
+              <!-- <template v-if="subitem.type === 2">
                 <template v-if="subitem.children">
                   <el-sub-menu :index="subitem.id + ''">
                     <template #title>
@@ -35,13 +35,16 @@
                       </template>
                     </template>
                   </el-sub-menu>
-                </template>
-                <template v-else>
-                  <el-menu-item :index="subitem.id + ''">
-                    {{ subitem.name }}
-                  </el-menu-item>
-                </template>
-              </template>
+                </template> -->
+              <!-- <template v-else> -->
+              <el-menu-item
+                :index="subitem.id + ''"
+                @click="handleMenuItemClick(subitem.url)"
+              >
+                {{ subitem.name }}
+              </el-menu-item>
+              <!-- </template> -->
+              <!-- </template> -->
             </template>
           </el-sub-menu>
         </template>
@@ -53,6 +56,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { myStore } from '@/store/index'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'Aside',
@@ -66,8 +70,17 @@ export default defineComponent({
     //此时store缺少类型是不好的 要区分根类型 和 模块的类型
     const store = myStore()
     const userMenus = computed(() => store.state.loginModule.menue)
+    const route = useRouter()
+
+    //点击跳转到各个菜单页面
+    const handleMenuItemClick = (url: any) => {
+      route.push({
+        path: url ?? '/not/found'
+      })
+    }
     return {
-      userMenus
+      userMenus,
+      handleMenuItemClick
     }
   }
 })

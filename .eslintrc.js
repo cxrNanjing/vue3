@@ -19,6 +19,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    'import/no-duplicates': 'off'
+    'import/no-duplicates': 'off',
+    '@typescript-eslint/no-var-requires': 'off'
   }
 }
