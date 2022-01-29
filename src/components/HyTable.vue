@@ -9,7 +9,7 @@
           :label="item.label"
           min-width="235"
         >
-          <!-- el-table-column只有一个默认插槽  由于这边是循环的 所以默认插槽里的内容是变的 但是有要改变格式 只能在使用作用域插槽 如果不是循环的 每个column可以用默认插槽就可以了-->
+          <!-- el-table-column只有一个默认插槽  由于这边是循环的 所以默认插槽里的内容是变的 所有改格式的话都是全部改 只能在使用作用域插槽 如果不是循环的 每个column可以用默认插槽就可以了-->
           <template #default="scope">
             <slot :name="item.prop" :row="scope.row">
               {{ scope.row[item.prop] }}
