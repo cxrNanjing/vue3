@@ -1,5 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
+import type { MenuBreadCrumb } from '@/views/main/childcpn/header/index'
 
+let firstMenu: any
 export function mapMenuToRoutes(userMenu: any[]): RouteRecordRaw[] {
   const routes: RouteRecordRaw[] = []
 
@@ -20,6 +22,9 @@ export function mapMenuToRoutes(userMenu: any[]): RouteRecordRaw[] {
           return item.path === menu.url
         })
         if (route) routes.push(route)
+        if (!firstMenu) {
+          firstMenu = menu
+        }
       } else {
         _recurseGetRoute(menu.children)
       }
@@ -29,3 +34,34 @@ export function mapMenuToRoutes(userMenu: any[]): RouteRecordRaw[] {
   _recurseGetRoute(userMenu)
   return routes
 }
+
+export function pathToMenu(userMenu: any[], url: string): any {
+  for (const item of userMenu) {
+    if (item.type === 1) {
+      const findItem = pathToMenu(item.children ?? [], url)
+      if (findItem) return findItem
+    } else if (item.type === 2 && item.url === url) {
+      return item
+    }
+  }
+}
+
+export function pathToBreakMenu(userMenu: any[], url: string): any {
+  const itemBreadCrumb: MenuBreadCrumb[] = []
+  for (const item of userMenu) {
+    if (item.type === 1) {
+      const findItem = pathToMenu(item.children ?? [], url)
+      if (findItem) {
+        itemBreadCrumb.push({ name: item.name })
+        itemBreadCrumb.push({ name: findItem.name })
+        // return findItem
+      }
+    } else if (item.type === 2 && item.url === url) {
+      return item
+    }
+  }
+
+  return itemBreadCrumb
+}
+
+export { firstMenu }

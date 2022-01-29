@@ -8,3 +8,8 @@ export interface ILoginState {
   userInfo: any
   menue: any
 }
+
+export interface ISystemState {
+  userList: any[]
+  userCount: number
+}

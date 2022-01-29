@@ -1,7 +1,9 @@
 import { createStore, useStore } from 'vuex'
 import type { Store } from 'vuex'
-import type { IRootState, ILoginState } from './types'
+import type { IRootState, ILoginState, ISystemState } from './types'
 import loginModule from './login'
+import systemModule from './main/system/system'
+
 const store = createStore<IRootState>({
   state() {
     return {
@@ -13,7 +15,8 @@ const store = createStore<IRootState>({
   actions: {},
   getters: {},
   modules: {
-    loginModule
+    loginModule,
+    systemModule
   }
 })
 
@@ -24,7 +27,11 @@ export function saveStore() {
 interface ILoginStore {
   loginModule: ILoginState
 }
-type IMyStore = ILoginStore & IRootState
+
+interface IsystemModule {
+  systemModule: ISystemState
+}
+type IMyStore = ILoginStore & IRootState & IsystemModule
 
 //封装自己的store类型
 export function myStore(): Store<IMyStore> {

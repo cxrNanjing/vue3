@@ -6,12 +6,12 @@
     </div>
     <el-menu
       class="el-menu-vertical-demo"
-      active-text-color="bule"
+      active-text-color="blue"
       background-color="#d3dce6"
       text-color="#000"
       :collapse="isFold"
       :unique-opened="true"
-      default-active="2"
+      :default-active="defaultActive"
     >
       <template v-for="item in userMenus" :key="item.id">
         <template v-if="item.type === 1">
@@ -54,9 +54,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
 import { myStore } from '@/store/index'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import { pathToMenu } from '@/utils/map-menu'
 
 export default defineComponent({
   name: 'Aside',
@@ -67,19 +68,27 @@ export default defineComponent({
     }
   },
   setup() {
-    //此时store缺少类型是不好的 要区分根类型 和 模块的类型
+    // 此时store缺少类型是不好的 要区分根类型 和 模块的类型
     const store = myStore()
-    const userMenus = computed(() => store.state.loginModule.menue)
-    const route = useRouter()
+    // route
+    const router = useRouter()
+    const route = useRoute()
 
-    //点击跳转到各个菜单页面
+    // data
+    const userMenus = computed(() => store.state.loginModule.menue)
+
+    // handle click点击跳转到各个菜单页面
     const handleMenuItemClick = (url: any) => {
-      route.push({
+      router.push({
         path: url ?? '/not/found'
       })
     }
+
+    const item = pathToMenu(userMenus.value, route.path)
+    const defaultActive = ref(item.id + '')
     return {
       userMenus,
+      defaultActive,
       handleMenuItemClick
     }
   }

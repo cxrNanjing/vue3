@@ -20,6 +20,8 @@ module.exports = {
     'no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     'import/no-duplicates': 'off',
-    '@typescript-eslint/no-var-requires': 'off'
+    '@typescript-eslint/no-var-requires': 'off',
+    'vue/no-deprecated-v-bind-sync': 'off',
+    'vue/no-mutating-props': 'off'
   }
 }

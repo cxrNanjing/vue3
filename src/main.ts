@@ -14,9 +14,10 @@ import { registerElementCpn, registerIconCpn } from './global'
 
 const app = createApp(App)
 // registerElementCpn(app)
-saveStore()
+
 app.use(registerElementCpn)
 app.use(registerIconCpn)
 app.use(store)
+saveStore()
 app.use(router)
 app.mount('#app')
