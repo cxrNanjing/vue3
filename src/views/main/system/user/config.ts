@@ -15,29 +15,35 @@ export const formDataConfig: IForm = {
       placeholder: '请输入用户名'
     },
     {
-      filed: 'password',
-      label: '密码',
-      type: 'password',
-      placeholder: '请输入密码'
+      filed: 'realname',
+      label: '真实姓名',
+      type: 'input',
+      placeholder: '请输入真实姓名'
     },
     {
-      filed: 'sports',
-      label: '喜欢的运动',
+      filed: 'cellphone',
+      label: '电话号码',
+      type: 'input',
+      placeholder: '请输入电话号码'
+    },
+    {
+      filed: 'enable',
+      label: '用户状态',
       type: 'select',
-      placeholder: '请选择喜欢运动名称',
+      placeholder: '请选择用户状态',
       otherOptions: [
         {
-          value: 'basketball',
-          label: '篮球'
+          value: 1,
+          label: '启用'
         },
         {
-          value: 'football',
-          label: '足球'
+          value: 0,
+          label: '禁用'
         }
       ]
     },
     {
-      filed: 'time',
+      filed: 'createAt',
       label: '创建时间',
       type: 'date-picker',
       placeholder: '请输入时间'

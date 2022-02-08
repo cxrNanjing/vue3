@@ -1,6 +1,8 @@
 export interface IRootState {
   name: string
   age: number
+  allDepartment: any[]
+  allRole: any[]
 }
 
 export interface ILoginState {
@@ -10,6 +12,6 @@ export interface ILoginState {
 }
 
 export interface ISystemState {
-  userList: any[]
-  userCount: number
+  list: any[]
+  count: number
 }

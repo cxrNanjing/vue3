@@ -56,7 +56,7 @@ export default defineComponent({
         background-color: palegoldenrod;
       }
       .page-main {
-        text-align: center;
+        text-align: right;
       }
     }
   }

@@ -8,7 +8,7 @@
       <el-row>
         <template v-for="item in formItems" :key="item.label">
           <el-col v-bind="colLayout">
-            <el-form-item :label="item.label">
+            <el-form-item :label="item.label" v-if="!item.isHidden">
               <template
                 v-if="item.type === 'input' || item.type === 'password'"
               >
@@ -38,7 +38,7 @@
                 <el-date-picker
                   style="width: 100%"
                   type="daterange"
-                  range-separator="To"
+                  range-separator="到"
                   start-placeholder="开始时间"
                   end-placeholder="结束时间"
                   v-model="formData[`${item.filed}`]"

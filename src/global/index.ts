@@ -32,7 +32,10 @@ import {
   ElBreadcrumbItem,
   ElDatePicker,
   ElTable,
-  ElTableColumn
+  ElTableColumn,
+  ElPagination,
+  ElImage,
+  ElDialog
 } from 'element-plus/lib/components'
 
 import {
@@ -76,7 +79,10 @@ const components = [
   ElBreadcrumbItem,
   ElDatePicker,
   ElTable,
-  ElTableColumn
+  ElTableColumn,
+  ElPagination,
+  ElImage,
+  ElDialog
 ]
 
 const icons = [Avatar, Phone, Fold, Expand, ArrowDown, Search]

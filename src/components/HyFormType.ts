@@ -6,6 +6,7 @@ export interface IHyFormType {
   placeholder: any
   otherOptions?: any
   filed: string //用来搜集表单数据
+  isHidden?: boolean
 }
 
 export interface IForm {
