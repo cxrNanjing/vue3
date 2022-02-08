@@ -42,6 +42,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 用来提交代码时的根式化
 
 npx commitizen init cz-conventional-changelog --save-dev --save-exact
+npx cz
 ```
 
 ### vue.config.js
