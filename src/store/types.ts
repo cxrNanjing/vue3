@@ -16,3 +16,10 @@ export interface ISystemState {
   list: any[]
   count: number
 }
+
+export interface IDashboardState {
+  categoryCount: any[]
+  categorySale: any[]
+  categoryFavor: any[]
+  addressSale: any[]
+}

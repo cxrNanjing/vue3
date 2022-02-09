@@ -1,8 +1,14 @@
 import { createStore, useStore } from 'vuex'
 import type { Store } from 'vuex'
-import type { IRootState, ILoginState, ISystemState } from './types'
+import type {
+  IRootState,
+  ILoginState,
+  ISystemState,
+  IDashboardState
+} from './types'
 import loginModule from './login'
 import systemModule from './main/system/system'
+import dashboardModule from './main/anliysis/dashboard'
 import { getPageListData } from '@/service/main/system/system'
 
 const store = createStore<IRootState>({
@@ -54,7 +60,8 @@ const store = createStore<IRootState>({
   getters: {},
   modules: {
     loginModule,
-    systemModule
+    systemModule,
+    dashboardModule
   }
 })
 
@@ -70,7 +77,11 @@ interface ILoginStore {
 interface IsystemModule {
   systemModule: ISystemState
 }
-type IMyStore = ILoginStore & IRootState & IsystemModule
+interface IdashboardModule {
+  dashboardModule: IDashboardState
+}
+
+type IMyStore = ILoginStore & IRootState & IsystemModule & IdashboardModule
 
 //封装自己的store类型
 export function myStore(): Store<IMyStore> {
