@@ -8,6 +8,7 @@
       destroy-on-close
     >
       <hy-form v-bind="dialogconfig" v-model="aa"></hy-form>
+      <slot></slot>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="handleCancel">取消</el-button>

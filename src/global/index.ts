@@ -35,7 +35,8 @@ import {
   ElTableColumn,
   ElPagination,
   ElImage,
-  ElDialog
+  ElDialog,
+  ElTree
 } from 'element-plus/lib/components'
 
 import {
@@ -82,7 +83,8 @@ const components = [
   ElTableColumn,
   ElPagination,
   ElImage,
-  ElDialog
+  ElDialog,
+  ElTree
 ]
 
 const icons = [Avatar, Phone, Fold, Expand, ArrowDown, Search]

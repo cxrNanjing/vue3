@@ -64,4 +64,19 @@ export function pathToBreakMenu(userMenu: any[], url: string): any {
   return itemBreadCrumb
 }
 
+export function mapMenuToTree(menu: any[]) {
+  const keys: number[] = [] //此处不能写在外面，因为要把结果返回
+  const _recurseMenu = (menu: any[]) => {
+    for (const item of menu) {
+      if (item.children) {
+        _recurseMenu(item.children)
+      } else {
+        keys.push(item.id)
+      }
+    }
+  }
+  _recurseMenu(menu)
+  return keys
+}
+
 export { firstMenu }

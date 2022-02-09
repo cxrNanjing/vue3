@@ -3,6 +3,7 @@ export interface IRootState {
   age: number
   allDepartment: any[]
   allRole: any[]
+  allMenu: any[]
 }
 
 export interface ILoginState {
